@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="{{ config.extra.language_code | default(value="en-US") }}">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <style>
+         html { font-family: sans-serif; }
+        </style>
+    </head>
+    <body class="">
+        <div>
+            <header>
+                <h1>karaoke カラオケ</h1>
+
+            {{section.content | safe}}
+            </header>
+
+            <main>
+                {% block content %}{% endblock content %}
+
+                {% set data = load_data(path="content/data/data.yml") %}
+                {% if data %}
+
+                <ul>
+                    {% for song in data %}
+                    <li>
+                        <em>{{ song.title }}</em> by
+                        {{ song.artist }} ({{ song.year }})
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% else %}No data found{% endif %}
+
+
+            </main>
+
+            <footer>
+                <p>みんなでうたいましょう</p>
+            </footer>
+        </div>
+
+    </body>
+</html>
