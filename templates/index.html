@@ -27,7 +27,7 @@
                     {% for song in data %}
                     <li>
                         <em>{{ song.title }}</em> by
-                        {{ song.artist }} ({{ song.year }})
+                        {{ song.artist }} {%if song.year %}({{ song.year }}){% endif %}
                     </li>
                     {% endfor %}
                 </ul>
